@@ -7,9 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import project.akhir.danapprentechteam3.login.models.User;
 import project.akhir.danapprentechteam3.login.repository.UserRepository;
 import project.akhir.danapprentechteam3.transaksi.model.Transaksi;
-import project.akhir.danapprentechteam3.transaksi.rabbitMQ.consumer.TransaksiMessageListener;
-import project.akhir.danapprentechteam3.transaksi.rabbitMQ.producer.TransaksiMessageSender;
-import project.akhir.danapprentechteam3.transaksi.service.ServiceTransaksi;
 import project.akhir.danapprentechteam3.transaksi.service.ServiceTransaksiImpl;
 
 import java.util.Date;
@@ -20,14 +17,9 @@ public class TransaksiController {
 
     UserRepository userRepository;
 
-    @Autowired
-    TransaksiMessageSender trxSender;
 
     @Autowired
     ServiceTransaksiImpl serviceTransaksi;
-
-    @Autowired
-    TransaksiMessageListener trxListener;
 
     @PostMapping("/E-wallet")
     public ResponseEntity<?> transaksiEwallet(@RequestBody User user){
